@@ -22,4 +22,9 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberVO> selectMemberList() {
         return this.memberMapper.selectMemberList();
     }
+
+    @Override
+    public List<MemberVO> searchMemberList(String searchOption, String searchKeyword) {
+        return this.memberMapper.searchMemberList(searchOption, searchKeyword);
+    }
 }

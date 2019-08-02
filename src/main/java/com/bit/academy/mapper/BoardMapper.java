@@ -41,4 +41,7 @@ public interface BoardMapper {
      */
     List<BoardVO> selectBoardList();
 
+
+
+
 }

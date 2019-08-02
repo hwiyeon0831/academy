@@ -18,4 +18,6 @@ public interface MemberService {
      * @return
      */
     List<MemberVO> selectMemberList();
+
+    List<MemberVO> searchMemberList(String searchOption, String searchKeyword);
 }

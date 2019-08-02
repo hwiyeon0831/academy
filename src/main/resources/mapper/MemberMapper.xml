@@ -5,15 +5,21 @@
     <mapper namespace="com.bit.academy.mapper.MemberMapper">
     <select id = "selectMember" parameterType="Integer" resultType="com.bit.academy.model.MemberVO">
         SELECT
-            m_no, m_name, m_id, m_password, m_phone, m_address, m_regdate, m_birth
+            m_no, m_name, m_id, m_password, m_phone, m_address, m_regdate
         FROM member
         WHERE m_no = #{m_no}
     </select>
 
     <select id="selectMemberList" resultType="com.bit.academy.model.MemberVO">
         SELECT
-            m_no, m_name, m_id, m_password, m_phone, m_address, m_regdate, m_birth
+            m_no, m_name, m_id, m_password, m_phone, m_address, m_regdate
         FROM member
     </select>
 
+    <select id="searchMemberList" resultType="com.bit.academy.model.MemberVO">
+        SELECT
+            m_no, m_name, m_id, m_password, m_phone, m_address, m_regdate
+        FROM member
+        WHERE ${searchOption} like CONCAT('%', #{searchKeyword}, '%')
+    </select>
 </mapper>

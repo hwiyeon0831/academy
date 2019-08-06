@@ -5,10 +5,52 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>ADMIN PAGE</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/agency.min.css" rel="stylesheet">
 </head>
 <body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/member/member_chk">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <h1>Member List</h1>
 
+<section class="page-section" id="services">
     <select id = "search-select">
         <option th:value="m_no">회원번호</option>
         <option th:value="m_name">회원 성명</option>
@@ -17,58 +59,61 @@
 
     <input type="text" id="search" />
 
-<input type="button" value="검색" onclick="searchMember();" />
+    <input type="button" value="검색" onclick="searchMember();" />
 
-<table>
-    <thead>
-    <tr>
+    <table>
+        <thead>
+        <tr>
 
-        <td>회원번호</td>
-        <td>성명</td>
-        <td>아이디</td>
-    </tr>
-    </thead>
+            <td>회원번호</td>
+            <td>성명</td>
+            <td>아이디</td>
+        </tr>
+        </thead>
 
 
-    <tbody id = "table">
+        <tbody id = "table">
 
-    <tr th:each="member: ${memberList}" onclick="selectMember(this);" th:attr="data-m_no=${member.m_no}">
-        <td><span th:text="${member.m_no}"></span></td>
-        <td><span th:text="${member.m_name}"></span></a></td>
-        <td><span th:text="${member.m_id}"></span></a></td>
-    </tr>
+        <tr th:each="member: ${memberList}" onclick="selectMember(this);" th:attr="data-m_no=${member.m_no}">
+            <td><span th:text="${member.m_no}"></span></td>
+            <td><span th:text="${member.m_name}"></span></a></td>
+            <td><span th:text="${member.m_id}"></span></a></td>
+        </tr>
 
-    </tbody>
-</table>
-<div id = "memberModal" style="display: none" class = "w3-modal">
-    <div class="w3-modal-content w3-animate-opacity w3-card-4">
-        <header class="w3-container w3-teal">
+        </tbody>
+    </table>
+    <div id = "memberModal" style="display: none" class = "w3-modal">
+        <div class="w3-modal-content w3-animate-opacity w3-card-4">
+            <header class="w3-container w3-teal">
         <span onclick="document.getElementById('memberModal').style.display='none'"
               class="w3-button w3-display-topright">&times;</span>
-            <h2>상세 회원 정보</h2>
-        </header>
-        <table>
-            <thead>
-            <tr>
+                <h2>상세 회원 정보</h2>
+            </header>
+            <table>
+                <thead>
+                <tr>
 
-                <td>회원번호</td>
-                <td>성명</td>
-                <td>아이디</td>
-                <td>전화번호</td>
-                <td>주소</td>
-                <td>등록날짜</td>
-            </tr>
-            </thead>
-
-
-            <tbody id = "modal-table">
+                    <td>회원번호</td>
+                    <td>성명</td>
+                    <td>아이디</td>
+                    <td>전화번호</td>
+                    <td>주소</td>
+                    <td>등록날짜</td>
+                </tr>
+                </thead>
 
 
+                <tbody id = "modal-table">
 
-            </tbody>
-        </table>
+
+
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+</section>
+
+
 <script type="text/javascript" th:inline="javascript">
 
     var selectMember = function(obj){

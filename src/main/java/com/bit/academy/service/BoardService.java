@@ -37,4 +37,6 @@ public interface BoardService {
      * @return
      */
     List<BoardVO> selectBoardList();
+
+
 }

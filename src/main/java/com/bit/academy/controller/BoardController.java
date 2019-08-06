@@ -1,7 +1,6 @@
 package com.bit.academy.controller;
 
 import com.bit.academy.model.BoardVO;
-import com.bit.academy.model.MemberVO;
 import com.bit.academy.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +20,6 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
-
 
 
     //    @RequestMapping(value = "/board/insert", method = RequestMethod.GET)

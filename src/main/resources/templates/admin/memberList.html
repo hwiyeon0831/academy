@@ -98,6 +98,7 @@
                 $("#modal-table").append('<td>' + data.m_phone + '</td>');
                 $("#modal-table").append('<td>' + data.m_address + '</td>');
                 $("#modal-table").append('<td>' + data.m_regdate + '</td>');
+
                 modal.style.display = "block";
 
             },
@@ -119,26 +120,6 @@
         var keyword = $.trim($("#search").val());
         console.log(option);
         location.href = '/admin/member/'+option + '/' + keyword;
-        /*
-        $.ajax({
-            url: '/admin/searchMember/'+option + '/' + keyword,
-            type: 'get',
-            success : function(data) {
-                // 성공 시 동작
-                console.log('성공');
-                console.log(data);
-
-            },
-            error: function(error) {
-                // 실패 시 동작
-                console.error('실패');
-                console.error(error);
-            },
-            complete: function(response) {
-                // 성공하든 실패하든 항상 할 동작
-                console.log('수행 요청이 완료되었습니다.');
-            }
-        });*/
     };
 
 

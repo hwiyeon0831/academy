@@ -25,4 +25,7 @@ public interface MemberMapper {
 
 
     List<MemberVO> searchMemberList(String searchOption, String searchKeyword);
+
+    void updateMember(MemberVO memberVO);
+
 }

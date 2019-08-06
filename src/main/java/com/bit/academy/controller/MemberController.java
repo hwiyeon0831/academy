@@ -5,11 +5,10 @@ import com.bit.academy.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,4 +49,53 @@ public class MemberController {
 
         return "admin/memberList";
     }
+
+
+    @GetMapping("/member/member_chk")
+    public String memberChk(){
+        return "member/member_check";
+    }
+
+
+    @GetMapping("/member/member_info")
+    public String memberInfo(){
+        return "member/member_info";
+    }
+
+    @PostMapping("/member/member_info")
+    public String testSession( @ModelAttribute MemberVO memberVO
+            , Model model
+            , HttpServletRequest request){
+
+        String chk_pw = request.getParameter("chk_pw");
+
+        model.addAttribute("member", this.memberService.memberInfo(memberVO, chk_pw));
+
+        return "member/member_info";
+    }
+
+    @GetMapping("/member/member_update")
+    public String memberUpdate(){
+        return "member/member_info";
+    }
+
+    @PostMapping("/member/member_update")
+    public String memberUpdateExecute(@ModelAttribute MemberVO memberVO, Model model, HttpServletRequest request){
+
+        log.debug("===========================================");
+        log.debug(memberVO.toString());
+        this.memberService.memberUpdate(memberVO);
+
+
+        model.addAttribute("member", this.memberService.selectMember(memberVO.getM_no()));
+
+        return "member/member_info";
+    }
+
+    @GetMapping("/member/index")
+    public String index(){
+        return "member/index";
+    }
+
+
 }

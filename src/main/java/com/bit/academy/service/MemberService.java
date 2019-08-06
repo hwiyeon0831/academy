@@ -3,6 +3,7 @@ package com.bit.academy.service;
 import com.bit.academy.model.MemberVO;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface MemberService {
@@ -20,4 +21,8 @@ public interface MemberService {
     List<MemberVO> selectMemberList();
 
     List<MemberVO> searchMemberList(String searchOption, String searchKeyword);
+
+    MemberVO memberInfo(MemberVO memberVO, String chk_pw);
+
+    MemberVO memberUpdate(MemberVO memberVO);
 }

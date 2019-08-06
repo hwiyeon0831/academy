@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/agency.min.css" rel="stylesheet">
+    <title>ADMIN PAGE</title>
+</head>
+<body>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+        </li>
+    </ul>
+</div>
+<form name="memberInfo" id="memberInfo" method="post" action="/member/member_update/">
+    <div th:each="member: ${member}">
+        <div>회원 번호 <input id = "m_no" name = "m_no" th:value="${member.m_no}"></div>
+        <div>아이디 <input id = "m_id" name = "m_id" th:value="${member.m_id}"> </div>
+        <div>비밀번호 <input id = "m_password" name = "m_password" th:value="${member.m_password}"></div>
+        <div>이름 <input id = "m_name" name = "m_name" th:value="${member.m_name}"></div>
+        <div>주소 <input id = "m_address" name = "m_address" th:value="${member.m_address}"></div>
+        <div>핸드폰 <input id = "m_phone" name = "m_phone" th:value="${member.m_phone}"></div>
+    </div>
+</form>
+<input type="button" value="수정" onclick="modifyMember()">
+
+</body>
+<script type="text/javascript" th:inline="javascript">
+    var modifyMember = function () {
+        $("#memberInfo").submit();
+    }
+</script>
+</html>

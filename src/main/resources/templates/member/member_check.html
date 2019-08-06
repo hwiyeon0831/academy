@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>ADMIN PAGE</title>
+</head>
+<body>
+<form name="checkForm" id="checkForm" method="post" action="/member/member_info"
+      style="width:600px;">
+    <input type="text" id="m_no" name="m_no"/>
+    <br>
+    <input type="text" id="chk_pw" name = "chk_pw"/>
+    <input type = "button" value = "확인" onclick = "check();"></input>
+</form>
+
+
+<script type="text/javascript" th:inline="javascript">
+
+    var check = function () {
+        $('#checkForm').submit();
+    }
+
+    var check2 = function () {
+        console.log($("#chk_pw").val());
+
+        var chk_pw = $('#chk_pw').val();
+        console.log(chk_pw);
+        location.href = '/member/member_info/'+chk_pw;
+    };
+</script>
+</body>
+</html>

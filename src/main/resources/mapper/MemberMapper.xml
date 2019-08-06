@@ -22,4 +22,12 @@
         FROM member
         WHERE ${searchOption} like CONCAT('%', #{searchKeyword}, '%')
     </select>
+
+    <update id="updateMember" parameterType="com.bit.academy.model.MemberVO">
+        UPDATE member
+        SET
+            m_name = #{m_name}, m_password=#{m_password}, m_phone=#{m_phone}, m_address=#{m_address}
+        WHERE m_id = #{m_id}
+
+    </update>
 </mapper>

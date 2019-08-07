@@ -92,9 +92,9 @@ public class MemberController {
         return "member/member_info";
     }
 
-    @GetMapping("/member/index")
+    @GetMapping("/admin")
     public String index(){
-        return "member/index";
+        return "admin/adminMain";
     }
 
 
